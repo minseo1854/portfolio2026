@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>김민서/산업시스템공학,AI정보공학과 학업 포트폴리오</title>
+
+<!-- 링크 미리보기(카카오톡·슬랙·페이스북 등) 설정 -->
+<meta name="description" content="직접 설계하고 제작하는 네트워크 엔지니어">
+<meta property="og:type" content="website">
+<meta property="og:title" content="김민서/산업시스템공학,AI정보공학과 학업 포트폴리오">
+<meta property="og:description" content="직접 설계하고 제작하는 네트워크 엔지니어">
+<meta property="og:url" content="https://portfolio2026-ecru-eight.vercel.app/">
+<meta property="og:image" content="https://portfolio2026-ecru-eight.vercel.app/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+  /* ===== 디자인 기준 ===== */
+  :root {
+    --accent: #7BFE87;      /* 주색: 형광펜 강조 배경으로만 사용 */
+    --bg: #F7F7F7;          /* 배경 */
+    --bg-alt: #DDDDDD;      /* 구분 영역 */
+    --text: #181818;        /* 글자 */
+    --sub: #797979;         /* 보조 회색: 날짜·역할·설명 */
+    --line: #C9C9C9;
+    --font: "Montserrat", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;  /* 영문: Montserrat, 한글: Noto Sans KR */
+    --wrap: 1120px;
+    --header-h: 64px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* 형광펜 강조 */
+  .mark {
+    background: linear-gradient(transparent 45%, var(--accent) 45%, var(--accent) 92%, transparent 92%);
+    padding: 0 2px;
+  }
+
+  /* 확인이 필요한 자리 */
+  .todo {
+    border: 1px dashed var(--sub);
+    color: var(--sub);
+    padding: 0 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ===== 상단 메뉴 ===== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 247, 247, 0.94);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .site-header .wrap {
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-weight: 800;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav a {
+    text-decoration: none;
+    font-size: 15px;
+    color: var(--sub);
+    padding: 4px 0;
+    transition: color .2s;
+  }
+
+  .nav a:hover { color: var(--text); }
+
+  .nav a.active {
+    color: var(--text);
+    font-weight: 700;
+    background: linear-gradient(transparent 60%, var(--accent) 60%);
+  }
+
+  .menu-btn {
+    display: none;
+    background: none;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .menu-btn span {
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    height: 2px;
+    background: var(--text);
+    transition: transform .25s, opacity .25s;
+  }
+
+  .menu-btn span:nth-child(1) { top: 13px; }
+  .menu-btn span:nth-child(2) { top: 19px; }
+  .menu-btn span:nth-child(3) { top: 25px; }
+
+  .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ===== 첫 화면 ===== */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-title {
+    font-size: 14px;
+    color: var(--sub);
+    margin-bottom: 28px;
+  }
+
+  .hero-name {
+    font-size: 100px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-line {
+    margin-top: 36px;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .keywords {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .keywords li {
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    padding: 4px 16px;
+    font-size: 14px;
+  }
+
+  /* ===== 공통 섹션 ===== */
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section.alt { background: var(--bg-alt); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--text);
+  }
+
+  .section-head h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .section-head .count {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--sub);
+  }
+
+  /* ===== 소개 ===== */
+  .about {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.8;
+    max-width: 36em;
+  }
+
+  /* 사진 + 회색 상자 대체 */
+  .photo {
+    position: relative;
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .section.alt .photo { background: #C4C4C4; }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo .placeholder {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+    color: var(--sub);
+  }
+
+  .photo.missing img { display: none; }
+  .photo.missing .placeholder { display: flex; }
+
+  .photo-profile { aspect-ratio: 1 / 1; }
+  .photo-project { aspect-ratio: 16 / 10; }
+  .photo-project img { object-fit: contain; }
+
+  /* ===== 전공·학업 ===== */
+  .course-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .course-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 32px 28px;
+    min-height: 200px;
+    background: var(--bg);
+    border: 1px solid #C4C4C4;
+    border-radius: 14px;
+    transition: border-color .2s;
+  }
+
+  .course-list li:hover { border-color: var(--text); }
+
+  .course-num {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sub);
+  }
+
+  .course-name {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .course-desc {
+    color: var(--sub);
+    font-size: 16px;
+  }
+
+  /* ===== 대표 프로젝트 ===== */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 40px;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body { padding-top: 24px; }
+
+  .card-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--sub);
+  }
+
+  .card-title {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+  }
+
+  .info {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    border-top: 1px solid var(--text);
+    font-size: 14px;
+  }
+
+  .info dt, .info dd {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .info dt { color: var(--sub); }
+
+
+  /* ===== 역량 ===== */
+  .skills {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--text);
+    border-left: 1px solid var(--line);
+  }
+
+  .skills li {
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  /* ===== 연락처 ===== */
+  .contact {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-top: 1px solid var(--text);
+    font-size: clamp(16px, 2vw, 20px);
+  }
+
+  .contact dt, .contact dd {
+    padding: 20px 0;
+    border-bottom: 1px solid #BDBDBD;
+  }
+
+  .contact dt {
+    color: var(--sub);
+    font-size: 15px;
+    align-self: center;
+  }
+
+  .contact a {
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid var(--text);
+  }
+
+  .contact a:hover { background: var(--accent); }
+
+  .to-top {
+    position: fixed;
+    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--text);
+    background: var(--bg);
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+
+  .to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-footer { height: 40px; }
+
+  /* ===== 태블릿 ===== */
+  @media (max-width: 960px) {
+    .projects { gap: 48px 24px; }
+    .skills { grid-template-columns: repeat(2, 1fr); }
+    .course-list { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== 휴대폰 ===== */
+  @media (max-width: 760px) {
+    :root { --header-h: 56px; }
+
+    .menu-btn { display: block; }
+
+    .nav {
+      position: fixed;
+      top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .nav.open { max-height: 420px; }
+
+    .nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 24px 16px;
+    }
+
+    .nav a {
+      display: block;
+      padding: 12px 0;
+      font-size: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav li:last-child a { border-bottom: 0; }
+
+    .hero { padding: 64px 0 56px; }
+    .section { padding: 64px 0; }
+
+    .about {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .photo-profile { max-width: 220px; }
+
+    .course-list { grid-template-columns: 1fr; }
+
+    .course-list li {
+      min-height: 0;
+      padding: 24px 22px;
+    }
+
+    .projects { grid-template-columns: 1fr; }
+
+    .skills { grid-template-columns: 1fr; }
+
+    .skills li { padding: 20px; }
+
+    .contact { grid-template-columns: 1fr; }
+
+    .contact dt {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .contact dd {
+      padding-top: 4px;
+      word-break: break-all;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  /* ===== 카드 설명 · 자세히 보기 ===== */
+  .card-desc {
+    margin-top: 10px;
+    color: #4A4A4A;
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .more-btn {
+    margin-top: 20px;
+    align-self: flex-start;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    padding: 8px 20px;
+    cursor: pointer;
+  }
+
+  .more-btn:hover { background: var(--accent); }
+
+  /* ===== 상세 팝업 ===== */
+  .detail {
+    border: 0;
+    padding: 0;
+    width: min(760px, calc(100% - 32px));
+    max-height: calc(100% - 48px);
+    margin: auto;
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .detail::backdrop { background: rgba(24, 24, 24, 0.55); }
+
+  .detail-inner {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 48px);
+  }
+
+  .detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 28px 32px 20px;
+    border-bottom: 2px solid var(--text);
+  }
+
+  .detail-num {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--sub);
+  }
+
+  .detail-title {
+    margin-top: 4px;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+  }
+
+  .detail-meta {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--sub);
+  }
+
+  .detail-close {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    background: var(--bg);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .detail-close:hover { background: var(--accent); }
+
+  .detail-body {
+    overflow-y: auto;
+    padding: 8px 32px 32px;
+  }
+
+  .detail-body section {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .detail-body section:last-child { border-bottom: 0; }
+
+  .detail-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .detail-body p {
+    font-size: 15px;
+    color: #333333;
+  }
+
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .detail {
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+
+    .detail-inner {
+      max-height: 100%;
+      height: 100%;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .detail-head { padding: 20px 20px 16px; }
+
+    .detail-title { font-size: 20px; }
+
+    .detail-body { padding: 4px 20px 24px; }
+
+    .detail-body section {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 18px 0;
+    }
+  }
+
+  /* ===== FAQ ===== */
+  .faq-list { border-top: 1px solid var(--text); }
+
+  .faq-item { border-bottom: 1px solid var(--line); }
+
+  .faq-item summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 48px 1fr 24px;
+    gap: 12px;
+    align-items: start;
+    padding: 22px 0;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
+
+  .faq-q { color: var(--sub); }
+
+  .faq-icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-top: 2px;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 11px;
+    height: 2px;
+    background: var(--text);
+    transition: transform .2s;
+  }
+
+  .faq-icon::after { transform: rotate(90deg); }
+
+  .faq-item[open] .faq-icon::after { transform: rotate(0deg); }
+
+  .faq-item[open] summary .faq-mark {
+    background: linear-gradient(transparent 60%, var(--accent) 60%);
+  }
+
+  .faq-a {
+    padding: 0 36px 24px 60px;
+    color: #333333;
+    max-width: 56em;
+  }
+
+  @media (max-width: 760px) {
+    .faq-item summary {
+      grid-template-columns: 36px 1fr 24px;
+      font-size: 16px;
+      padding: 18px 0;
+    }
+
+    .faq-a { padding: 0 0 20px 48px; }
+  }
+
+  /* ===== 프로젝트 사진 → 발표자료 PDF ===== */
+  .photo-link {
+    display: block;
+    text-decoration: none;
+    outline-offset: 4px;
+  }
+
+  .photo-link .photo { transition: opacity .2s; }
+
+  .photo-link:hover .photo { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<!-- 상단 메뉴 -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">김민서</a>
+    <button class="menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#study">전공·학업</a></li>
+        <li><a href="#projects">대표 프로젝트</a></li>
+        <li><a href="#skills">역량</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 첫 화면: 사이트 제목 · 한 줄 소개 · 키워드 -->
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="hero-title">김민서/산업시스템공학,AI정보공학과 학업 포트폴리오</h1>
+      <p class="hero-name" aria-hidden="true">김민서</p>
+      <p class="hero-line"><span class="mark">직접 설계하고 제작하는 네트워크 엔지니어</span></p>
+      <ul class="keywords">
+        <li>앱 설계</li>
+        <li>앱 제작</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 소개 -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head"><h2>소개</h2></div>
+      <div class="about">
+        <div class="photo photo-profile">
+          <img src="images/na.png" alt="김민서 사진">
+          <div class="placeholder">images/na.png</div>
+        </div>
+        <p class="about-text">산업공학에서 문제를 숫자로 정의하는 법을, AI정보공학에서 그 해결책을 직접 만드는 법을 배웠습니다. 불만을 느낌으로 두지 않고, 관찰과 설문으로 증명한 뒤 해결하는 방식으로 일합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 전공·학업 -->
+  <section class="section alt" id="study">
+    <div class="wrap">
+      <div class="section-head"><h2>전공·학업</h2></div>
+      <ul class="course-list">
+        <li>
+          <span class="course-num">01</span>
+          <span class="course-name">컴퓨터네트워크</span>
+          <span class="course-desc">네트워크의 기초적인 이론</span>
+        </li>
+        <li>
+          <span class="course-num">02</span>
+          <span class="course-name">인공지능을 위한 최적화 이론</span>
+          <span class="course-desc">네트워크를 최적으로 설계하는 방법</span>
+        </li>
+        <li>
+          <span class="course-num">03</span>
+          <span class="course-name">시계열 데이터처리 및 모델링</span>
+          <span class="course-desc">데이터 분석하는 방법</span>
+        </li>
+        <li>
+          <span class="course-num">04</span>
+          <span class="course-name">통신이론</span>
+          <span class="course-desc">네트워크 통신 이론</span>
+        </li>
+        <li>
+          <span class="course-num">05</span>
+          <span class="course-name">종합설계 및 제작</span>
+          <span class="course-desc">BLE project</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 대표 프로젝트 -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head"><h2>대표 프로젝트</h2></div>
+      <div class="projects">
+
+        <!-- 프로젝트 1: EduWatch -->
+        <article class="card">
+          <a class="photo-link" href="files/edge%20_project.pdf" target="_blank" rel="noopener" aria-label="EduWatch 발표자료(PDF) 열기">
+            <div class="photo photo-project">
+              <img src="images/edu2.png" alt="EduWatch 시연 사진">
+              <div class="placeholder">images/edu2.png</div>
+            </div>
+          </a>
+          <div class="card-body">
+            <p class="card-num">01</p>
+            <h3 class="card-title">EduWatch: 자세 감지 기반 공부용 스마트워치</h3>
+            <p class="card-desc">카메라로 학습 자세를 감지해 타이머를 제어하는 공부용 스마트워치를 팀으로 만들었다. 정상 자세와 엎드림을 구분하는 자세 감지 부분을 맡았다.</p>
+            <dl class="info">
+              <dt>기간</dt><dd>2025.07 발표</dd>
+              <dt>팀 규모</dt><dd>6인 팀</dd>
+              <dt>맡은 역할</dt><dd>카메라로 사람의 자세를 감지하고, 감지 결과에 따라 반응하는 부분을 맡았다.</dd>
+              <dt>사용 기술</dt><dd>XIAO ESP32S3, Edge Impulse 객체 탐지, LVGL</dd>
+            </dl>
+            <button class="more-btn" type="button" data-dialog="dlg-eduwatch">자세히 보기</button>
+          </div>
+        </article>
+
+        <!-- 프로젝트 2: BLE 좌석 관리 -->
+        <article class="card">
+          <a class="photo-link" href="files/BLE_project.pdf" target="_blank" rel="noopener" aria-label="BLE 좌석 관리 시스템 발표자료(PDF) 열기">
+            <div class="photo photo-project">
+              <img src="images/BLE3.png" alt="BLE 좌석 관리 앱 화면">
+              <div class="placeholder">images/BLE3.png</div>
+            </div>
+          </a>
+          <div class="card-body">
+            <p class="card-num">02</p>
+            <h3 class="card-title">BLE 기반 도서관 좌석 관리 시스템</h3>
+            <p class="card-desc">도서관 유령좌석 문제를 관찰과 설문으로 수치화해 자동반납 기준을 30분으로 정했다. BLE 비콘으로 자리 이탈을 감지하는 좌석 관리 앱 MVP를 만들었다.</p>
+            <dl class="info">
+              <dt>기간</dt><dd>2026.04~2026.06</dd>
+              <dt>팀 규모</dt><dd>5인 팀</dd>
+              <dt>맡은 역할</dt><dd>현장 관찰, 설문 설계, 통계 분석, 앱 개발을 맡았다.</dd>
+              <dt>사용 기술</dt><dd>Flutter, Firebase, BLE 비콘</dd>
+            </dl>
+            <button class="more-btn" type="button" data-dialog="dlg-ble">자세히 보기</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 역량 -->
+  <section class="section alt" id="skills">
+    <div class="wrap">
+      <div class="section-head"><h2>역량</h2></div>
+      <ul class="skills">
+        <li>현장 관측 설계</li>
+        <li>Python 시각화</li>
+        <li>Flutter · Firebase</li>
+        <li>BLE 비콘 연동</li>
+        <li>Edge impulse 객체 탐지</li>
+        <li>Arduino(ESP32)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head"><h2>FAQ</h2></div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="faq-q">Q1</span><span class="faq-text"><span class="faq-mark">산업시스템공학을 전공하다가 AI정보공학을 복수전공으로 고른 이유는 무엇인가요?</span></span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p class="faq-a">산업공학에서는 문제를 숫자로 정의하는 법을 배웠다. 여기에 AI를 접목해 할 수 있는 일을 하고 싶어 AI정보공학을 복수전공으로 선택했고, 그 해결책을 직접 만드는 법을 배웠다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q">Q2</span><span class="faq-text"><span class="faq-mark">산업공학과랑 AI정보공학과 공부가 네트워크 엔지니어라는 목표와 어떻게 연결되나요?</span></span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p class="faq-a">산업공학에서 문제를 숫자로 정의하는 법을 배웠고, 인공지능을 위한 최적화 이론 수업에서는 네트워크를 최적으로 설계하는 방법을 공부했다. 컴퓨터네트워크와 통신이론 수업으로 네트워크와 통신의 기초 이론을 익혔다. 종합설계의 BLE 좌석 관리 시스템에서는 비콘 신호의 RSSI 임계값을 조절해 좌석 근처에 있는지 판단하는 부분을 직접 만들었다. 문제를 숫자로 정의하고 그 해결책을 직접 설계해 만드는 방식으로 네트워크를 다루는 것이 목표다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q">Q3</span><span class="faq-text"><span class="faq-mark">팀에서 일을 어떻게 나눴고, 의견이 다를 때 어떻게 정리했나요?</span></span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p class="faq-a">EduWatch(6인 팀)에서는 각자 맡을 부분을 정해 기능을 개발했고, 나는 카메라로 자세를 감지하는 부분을 맡았다. 종합설계(5인 팀)에서는 현장 관찰, 설문 설계, 통계 분석, 앱 개발을 맡았고, 앱에서는 BLE 비콘 RSSI 연동, 화면 UI, Firestore 데이터 구조를 만들었다. 의견이 다를 때는 끊임없이 대화하며 맞춰 갔다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q">Q4</span><span class="faq-text"><span class="faq-mark">요즘 따로 공부하고 있는 것이 있나요?</span></span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p class="faq-a">보안 관제와 컨설팅 분야 교육을 듣고 있다.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-q">Q5</span><span class="faq-text"><span class="faq-mark">입사 후 처음 몇 년 동안 어떤 네트워크 엔지니어로 성장하고 싶나요?</span></span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p class="faq-a">직접 설계하고 제작하는 네트워크 엔지니어가 목표다. 입사 후 2년 동안은 보안 관제 업무를 하며 흐름을 파악하고, 그 이후에는 구축과 설계를 맡고 싶다.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section class="section alt" id="contact">
+    <div class="wrap">
+      <div class="section-head"><h2>연락처</h2></div>
+      <dl class="contact">
+        <dt>공개용 이메일</dt>
+        <dd><a href="mailto:minseo1854@gmail.com">minseo1854@gmail.com</a></dd>
+        <dt>GitHub 주소</dt>
+        <dd><span class="todo">확인 필요</span></dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer"></footer>
+
+<!-- 프로젝트 상세 팝업: EduWatch -->
+<dialog class="detail" id="dlg-eduwatch" aria-labelledby="dlg-eduwatch-title">
+  <div class="detail-inner">
+    <div class="detail-head">
+      <div>
+        <p class="detail-num">01</p>
+        <h3 class="detail-title" id="dlg-eduwatch-title">EduWatch: 자세 감지 기반 공부용 스마트워치</h3>
+        <p class="detail-meta">웨어러블 AI 엣지 컴퓨팅 · 6인 팀 · 2025.07.09 발표</p>
+      </div>
+      <button class="detail-close" type="button" aria-label="닫기">✕</button>
+    </div>
+    <div class="detail-body">
+      <section>
+        <h4>배경</h4>
+        <p>실제 학습 시간을 측정하기 위해, 학습 자세를 감지해 타이머를 제어하는 공부용 스마트워치를 만드는 팀 프로젝트였다. 워치에는 디지털 시계, 온습도 표시, 학습 타이머, 자세 감지 기능을 넣기로 했다.</p>
+      </section>
+      <section>
+        <h4>내 역할</h4>
+        <p>카메라로 사람의 자세를 감지하고, 감지 결과에 따라 반응하는 부분을 맡았다.</p>
+      </section>
+      <section>
+        <h4>과정과 어려움</h4>
+        <p>Edge Impulse로 만든 객체 탐지 모델을 XIAO ESP32S3 카메라 보드에서 실행해 카메라 영상으로 자세를 감지하고, 정상 자세와 엎드림으로 두 상태를 나눴다. 시연에서 자세 감지는 동작했다.</p>
+      </section>
+      <section>
+        <h4>해결</h4>
+        <p>정상 학습 자세에서는 타이머가 작동하고 엎드림이 감지되면 일시정지되도록 설계했다. 감지 결과는 워치로 전달했다.</p>
+      </section>
+      <section>
+        <h4>결과</h4>
+        <p>팀은 디지털 시계, 온습도 표시, 학습 타이머, 자세 감지 기능을 갖춘 프로토타입을 만들었다. 워치 화면은 LVGL로 구성했다. 감지 결과가 워치로 전달되는 것까지는 동작했지만, 화면 전환은 구현하지 못했다.</p>
+      </section>
+      <section>
+        <h4>배운 점</h4>
+        <p>설계하고 구현까지 하는 방법을 알게 됐다.</p>
+      </section>
+    </div>
+  </div>
+</dialog>
+
+<!-- 프로젝트 상세 팝업: BLE -->
+<dialog class="detail" id="dlg-ble" aria-labelledby="dlg-ble-title">
+  <div class="detail-inner">
+    <div class="detail-head">
+      <div>
+        <p class="detail-num">02</p>
+        <h3 class="detail-title" id="dlg-ble-title">BLE 기반 도서관 좌석 관리 시스템</h3>
+        <p class="detail-meta">종합설계 및 제작 · 5인 팀 · 2026.04~2026.06</p>
+      </div>
+      <button class="detail-close" type="button" aria-label="닫기">✕</button>
+    </div>
+    <div class="detail-body">
+      <section>
+        <h4>배경</h4>
+        <p>시험기간마다 자리를 오래 비워 두는 유령좌석에 대한 불만이 계속됐지만, 이를 뒷받침할 정량 자료는 부족했다. 기존 운영은 외출 여부만으로 좌석 반납을 판단해, 실제로 비어 있는 자리도 다른 학생이 이용하지 못했다.</p>
+      </section>
+      <section>
+        <h4>내 역할</h4>
+        <p>현장 관찰, 설문 설계, 통계 분석, 앱 개발을 맡았다. 앱에서는 BLE 비콘 RSSI 연동, 화면 UI, Firestore 데이터 구조를 직접 만들었다.</p>
+      </section>
+      <section>
+        <h4>과정과 어려움</h4>
+        <p>중앙도서관 2층 소통존 8석을 정해 5분 단위로 이용자의 이탈·복귀 시각을 기록하고, 51명에게 설문을 받았다. 자동반납 기준을 정할 때는 설문 응답자의 42%가 우려한 오작동도 고려해야 했다. 기회비용을 계산할 때는 만석으로 이용을 포기하는 비율처럼 직접 관측하지 못한 변수가 있었다. 자동반납 뒤 책상에 남은 물품을 어떻게 처리할지도 기준이 모호했다.</p>
+      </section>
+      <section>
+        <h4>해결</h4>
+        <p>설문의 최빈값, 관측 데이터의 누적 복귀율 격차가 가장 큰 지점, 이탈 사례(n=110)의 90분위수를 함께 보고, 세 방법이 모두 가리킨 30~35분 구간에서 보수적인 30분을 기준으로 정했다. 관측하지 못한 변수는 기준값을 정한 뒤 민감도 분석으로 범위를 확인했다. 남은 물품은 구역별 보관 선반과 앱 알림으로, 반납 전에는 5분 전 경고 알림으로 보완하는 방안을 냈다.</p>
+      </section>
+      <section>
+        <h4>결과</h4>
+        <p>Flutter와 Firebase로 로그인, 좌석 예약과 상태 확인, 자리 이탈 감지 후 자동반납까지 동작하는 MVP를 만들었다. 소통줄기 2층 1~6번 좌석에 BLE 비콘을 설치하고 RSSI 임계값으로 좌석 근처 여부를 판단했으며, 예약·입장·비콘 감지 기록을 Firestore에 실시간으로 저장했다. 유령좌석으로 생기는 연간 기회비용은 기준 시나리오에서 약 649만 원으로 추정했다. 일부 좌석을 대상으로 한 모의 가정에서는 이탈 17건 중 감지 오류가 2건이었다.</p>
+      </section>
+      <section>
+        <h4>배운 점</h4>
+        <p>설계하고 구현까지 하는 방법을 알게 됐다.</p>
+      </section>
+    </div>
+  </div>
+</dialog>
+
+<button class="to-top" type="button" aria-label="맨 위로">↑</button>
+
+<script>
+  (function () {
+    // 사진이 없으면 회색 상자로 바꾸기
+    document.querySelectorAll('.photo img').forEach(function (img) {
+      function markMissing() { img.parentElement.classList.add('missing'); }
+      img.addEventListener('error', markMissing);
+      if (img.complete && img.naturalWidth === 0) markMissing();
+    });
+
+    // 휴대폰 메뉴 열고 닫기
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('nav');
+
+    function closeMenu() {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', '메뉴 열기');
+    }
+
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    });
+
+    // 메뉴를 누르면 해당 섹션으로 부드럽게 이동
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var id = link.getAttribute('href');
+        var target = id === '#top' ? document.body : document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        closeMenu();
+        var header = document.querySelector('.site-header');
+        var y = id === '#top' ? 0 : target.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 8;
+        window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+        if (id !== '#top') history.replaceState(null, '', id);
+      });
+    });
+
+    // 지금 보고 있는 섹션을 메뉴에 표시
+    var navLinks = document.querySelectorAll('.nav a');
+    var sections = Array.prototype.map.call(navLinks, function (a) {
+      return document.querySelector(a.getAttribute('href'));
+    });
+
+    var toTop = document.querySelector('.to-top');
+
+    function onScroll() {
+      var pos = window.pageYOffset + window.innerHeight * 0.35;
+      var current = -1;
+      sections.forEach(function (sec, i) {
+        if (sec && sec.offsetTop <= pos) current = i;
+      });
+      if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 4) {
+        current = sections.length - 1;
+      }
+      navLinks.forEach(function (a, i) {
+        a.classList.toggle('active', i === current);
+      });
+      toTop.classList.toggle('show', window.pageYOffset > 600);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    // 자세히 보기 팝업 열고 닫기
+    var lastTrigger = null;
+
+    function closeDialog(dlg) {
+      if (dlg.open) dlg.close();
+    }
+
+    document.querySelectorAll('.more-btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var dlg = document.getElementById(b.getAttribute('data-dialog'));
+        if (!dlg) return;
+        lastTrigger = b;
+        if (typeof dlg.showModal === 'function') {
+          dlg.showModal();
+        } else {
+          dlg.setAttribute('open', '');
+        }
+        document.body.classList.add('modal-open');
+        var body = dlg.querySelector('.detail-body');
+        if (body) body.scrollTop = 0;
+      });
+    });
+
+    document.querySelectorAll('dialog.detail').forEach(function (dlg) {
+      dlg.querySelector('.detail-close').addEventListener('click', function () {
+        if (typeof dlg.close === 'function') { dlg.close(); } else { dlg.removeAttribute('open'); }
+      });
+      // 바깥 어두운 부분을 누르면 닫기
+      dlg.addEventListener('click', function (e) {
+        if (e.target === dlg) closeDialog(dlg);
+      });
+      dlg.addEventListener('close', function () {
+        document.body.classList.remove('modal-open');
+        if (lastTrigger) lastTrigger.focus();
+      });
+    });
+
+    // 화면이 넓어지면 휴대폰 메뉴 닫기
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760) closeMenu();
+    });
+  })();
+</script>
+</body>
+</html>
